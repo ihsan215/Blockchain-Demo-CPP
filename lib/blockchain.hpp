@@ -40,6 +40,7 @@ class Blockchain{
     void clear_current_block();
     string uint64_to_string(uint64_t _number);
     bool check_hash_is_available(string _hash);
+   
   
     public:
 
@@ -50,6 +51,8 @@ class Blockchain{
     void Get_BlockChain();
 
     bool Check_Chain_Is_Valid();
+
+    void Sleep();
 
     vector<Block_st> Chain;
 

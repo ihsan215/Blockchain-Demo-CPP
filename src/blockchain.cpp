@@ -1,5 +1,5 @@
 #include "../lib/blockchain.hpp"
-
+#include <dos.h>
 
 /////////////////////////////
 // Public Functions
@@ -67,7 +67,8 @@ void Blockchain::Get_BlockChain(){
         _str = "\n-------------------------------------\n";
         _str += "\nIndex: " + uint64_to_string(this->Chain.at(i).index);
         _str += "\nTime-Stamp: ";
-        _str +=  ctime(&this->Chain.at(i).time_stamp);
+        _str +=  uint64_to_string(this->Chain.at(i).time_stamp);
+        _str +=  "\n";
         _str += "Nonce: " + uint64_to_string(this->Chain.at(i).nonce);
         _str += "\nData: " + this->Chain.at(i).data;
         _str += "\nPrev. Hash: " + this->Chain.at(i).prev_hash;
@@ -76,6 +77,7 @@ void Blockchain::Get_BlockChain(){
         
         // Write to the file
         ChainFile << _str;
+
     }
     }
 
@@ -89,6 +91,14 @@ void Blockchain::Get_BlockChain(){
     ChainFile.close();
 }
 
+
+// sleep
+void Blockchain::Sleep(){
+    for(int i = 0; i<100000; i++){
+
+    }
+
+}
 // Public Functions
 /////////////////////////////
 
@@ -185,6 +195,9 @@ bool Blockchain::check_hash_is_available(string _hash){
  string Blockchain::hash(string _data){
     return sha256(_data);
  }
+
+
+
 
 // Private Functions
 /////////////////////////////
